@@ -18,52 +18,52 @@
 
 		describe("lita_1",()=>{
 			
-			it("带自定义头的ajax跨域请求", function(done){
-				var re;
-				$.ajax(cors+"header", {
-					method: "get",
-					dataType: "json",
-					headers: {
-						"x-A":"aaa"
-					},
-					beforeSend(xhr){
-						xhr.setRequestHeader("x-B", "bbb")
-					}
-				})
-				.then(content=>{
-					re = content
-					console.log(re)
-				})
-				setTimeout(()=>{
-					console.log(re)
-					expect(re).toEqual({
-						"data": "header aaa bbb"
-					});
-					done();
-				},1000)
-			})
+			// it("带自定义头的ajax跨域请求", function(done){
+			// 	var re;
+			// 	$.ajax(cors+"header", {
+			// 		method: "get",
+			// 		dataType: "json",
+			// 		headers: {
+			// 			"x-A":"aaa"
+			// 		},
+			// 		beforeSend(xhr){
+			// 			xhr.setRequestHeader("x-B", "bbb")
+			// 		}
+			// 	})
+			// 	.then(content=>{
+			// 		re = content
+			// 		console.log(re)
+			// 	})
+			// 	setTimeout(()=>{
+			// 		console.log(re)
+			// 		expect(re).toEqual({
+			// 			"data": "header aaa bbb"
+			// 		});
+			// 		done();
+			// 	},1000)
+			// })
 
-			it("带cookie的ajax跨域请求", function(done){
-				var re;
-				$.ajax(cors+"cookie", {
-					method: "get",
-					dataType: "json",
-					xhrFields: {
-				      	withCredentials: true
-				   	}
-				})
-				.then(content=>{
-					re = content
-					console.log(re)
-				})
-				setTimeout(()=>{
-					console.log(re)
-					expect(re).toEqual({
-						"data": "cookie lita"
-					});
-					done();
-				},1000)
-			})
+			// it("带cookie的ajax跨域请求", function(done){
+			// 	var re;
+			// 	$.ajax(cors+"cookie", {
+			// 		method: "get",
+			// 		dataType: "json",
+			// 		xhrFields: {
+			// 	      	withCredentials: true
+			// 	   	}
+			// 	})
+			// 	.then(content=>{
+			// 		re = content
+			// 		console.log(re)
+			// 	})
+			// 	setTimeout(()=>{
+			// 		console.log(re)
+			// 		expect(re).toEqual({
+			// 			"data": "cookie lita"
+			// 		});
+			// 		done();
+			// 	},1000)
+			// })
 
 			// 非简单请求跨域时会使用options方法发送预检命令
 			it("ajax非简单命令请求跨域", function(done){
@@ -81,64 +81,64 @@
 				setTimeout(()=>{
 					console.log(re)
 					expect(re).toEqual({
-						"data": "post json"
+						"data": "post json litao"
 					});
 					done();
 				},900)
 			})
 			
-			it("被调用方filter解决跨域请求", function(done){
-				var re;
-				$.ajax(cors+"filter", {
-					type: "get",
-					dataType: "json"
-				})
-				.then(content=>{
-					re = content
-				})
-				setTimeout(()=>{
-					console.log(re)
-					expect(re).toEqual({data:"被调用方 filter解决跨域"});
-					done();
-				},400)
-			})
+			// it("被调用方filter解决跨域请求", function(done){
+			// 	var re;
+			// 	$.ajax(cors+"filter", {
+			// 		type: "get",
+			// 		dataType: "json"
+			// 	})
+			// 	.then(content=>{
+			// 		re = content
+			// 	})
+			// 	setTimeout(()=>{
+			// 		console.log(re)
+			// 		expect(re).toEqual({data:"被调用方 filter解决跨域"});
+			// 		done();
+			// 	},400)
+			// })
 
-			it("jsonp请求", function(done){
-				var re;
-				$.ajax(cors+"jsonp", {
-					type: "get",
-					dataType: "jsonp",
-				})
-				.then(content=>{
-					re = content
-				})
-				setTimeout(()=>{
-					console.log(re)
-					expect(re).toEqual({data:"jsonp"});
-					done();
-				}, 400)
-			})
+			// it("jsonp请求", function(done){
+			// 	var re;
+			// 	$.ajax(cors+"jsonp", {
+			// 		type: "get",
+			// 		dataType: "jsonp",
+			// 	})
+			// 	.then(content=>{
+			// 		re = content
+			// 	})
+			// 	setTimeout(()=>{
+			// 		console.log(re)
+			// 		expect(re).toEqual({data:"jsonp"});
+			// 		done();
+			// 	}, 400)
+			// })
 			
-			it("ajax非跨域请求", function(done){
-				var re;
-				$.ajax(base+"ajaxpost", {
-					method: "post",
-					dataType: "json",
-					contentType: "application/json",
-					data: JSON.stringify({"name":"litao"}),
-				})
-				.then(content=>{
-					re = content
-					console.log(re)
-				})
-				setTimeout(()=>{
-					console.log(re)
-					expect(re).toEqual({
-						"data": "ajax litao"
-					});
-					done();
-				},500)
-			})
+			// it("ajax非跨域请求", function(done){
+			// 	var re;
+			// 	$.ajax(base+"ajaxpost", {
+			// 		method: "post",
+			// 		dataType: "json",
+			// 		contentType: "application/json",
+			// 		data: JSON.stringify({"name":"litao"}),
+			// 	})
+			// 	.then(content=>{
+			// 		re = content
+			// 		console.log(re)
+			// 	})
+			// 	setTimeout(()=>{
+			// 		console.log(re)
+			// 		expect(re).toEqual({
+			// 			"data": "ajax litao"
+			// 		});
+			// 		done();
+			// 	},500)
+			// })
 		})
 	</script>
 </body>

@@ -37,7 +37,8 @@
 			// 缓存预检命令的结果
 			header("Access-Control-Max-Age: 3600");
 			$data = file_get_contents('php://input');
-			return "post json";
+			$v = json_decode($data,true);
+			return "post json ".$v['name'];
 		}
 		// 被调用方的filter解决跨域
 		function filter(){
